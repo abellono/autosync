@@ -1,54 +1,122 @@
 <!doctype html>
 <html lang="en">
-<head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Auto Sync for Fitbit</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Auto Sync for Fitbit — weight and sleep into Apple Health</title>
 <meta name="description" content="Auto Sync moves your Fitbit weight, body fat, and sleep — with stages — into Apple Health. Automatically, free, no account.">
+<link rel="icon" type="image/png" href="icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root { color-scheme: light dark; }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
-    color: #111; background: #fff;
-    -webkit-font-smoothing: antialiased;
-  }
-  @media (prefers-color-scheme: dark) { body { color: #eee; background: #000; } }
-  main { max-width: 620px; margin: 0 auto; padding: 96px 28px 80px; }
-  h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
-  .sub { margin-top: 14px; font-size: 17px; line-height: 1.5; color: #666; }
-  @media (prefers-color-scheme: dark) { .sub { color: #999; } }
-  .rows { margin-top: 48px; }
-  .row { padding: 18px 0; border-bottom: 1px solid rgba(128,128,128,0.18); }
-  .row:first-child { border-top: 1px solid rgba(128,128,128,0.18); }
-  .row b { display: block; font-size: 15px; font-weight: 700; }
-  .row span { display: block; margin-top: 3px; font-size: 13px; color: #666; line-height: 1.45; }
-  @media (prefers-color-scheme: dark) { .row span { color: #999; } }
-  footer { margin-top: 56px; font-size: 12px; color: #999; line-height: 1.7; }
-  footer a { color: inherit; }
-  .note { margin-top: 40px; font-size: 13px; color: #666; line-height: 1.5; }
-  @media (prefers-color-scheme: dark) { .note { color: #999; } }
-</style>
-</head>
-<body>
-<main>
-  <h1>Auto Sync for&nbsp;Fitbit</h1>
-  <p class="sub">Weight, body fat, and sleep — with stages — from your Fitbit into Apple&nbsp;Health. On its own, every day.</p>
+*{box-sizing:border-box;margin:0}
+body{background:#fff;color:#0a0a0a;font-family:Manrope,-apple-system,sans-serif;
+     -webkit-font-smoothing:antialiased}
+.wrap{max-width:680px;margin:0 auto;padding:0 24px}
+.brand{display:flex;align-items:center;gap:10px;padding-top:56px}
+.brand svg{display:block}
+.brand span{font-size:13px;font-weight:800;letter-spacing:.24em;color:#6b6b6b}
+h1{font-size:clamp(44px,9vw,72px);font-weight:800;letter-spacing:-.03em;line-height:1.02;
+   margin-top:96px}
+.sub{font-size:19px;line-height:1.55;color:#6b6b6b;font-weight:500;margin-top:26px;max-width:34em}
 
-  <div class="rows">
-    <div class="row"><b>Automatic</b><span>Syncs in the background a few times a day, and every time you open it. No buttons to remember.</span></div>
-    <div class="row"><b>Sleep with stages</b><span>Light, deep, REM and awake — the full picture, not just a total.</span></div>
-    <div class="row"><b>Your whole history</b><span>The first sync imports everything your Fitbit account holds, years back.</span></div>
-    <div class="row"><b>Nothing collected</b><span>No account, no server, no tracking. Your data goes from Google's Fitbit API straight into Apple Health, on your phone.</span></div>
-    <div class="row"><b>Free</b><span>One job, done properly.</span></div>
+.card{width:min(340px,86vw);background:#fff;border-radius:22px;margin:96px auto 0;
+      padding:34px 28px 12px;border:1px solid rgba(0,0,0,.06);
+      box-shadow:0 24px 60px rgba(0,0,0,.12);
+      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Manrope,sans-serif}
+.verdict{font-size:26px;font-weight:800;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.crow{display:flex;align-items:center;gap:13px;padding:15px 0;border-top:1px solid rgba(0,0,0,.07)}
+.verdict+.crow{border-top:none;margin-top:22px}
+.cic{width:40px;height:40px;border-radius:12px;background:#f0f0f0;flex:none;
+     display:flex;align-items:center;justify-content:center}
+.cic svg{display:block}
+.ctx b{display:block;font-size:15px;font-weight:700;letter-spacing:-.01em}
+.ctx span{display:block;margin-top:2px;font-size:12.5px;color:#6b6b6b;font-weight:500}
+
+.rows{margin-top:120px}
+.row{padding:26px 0;border-top:1px solid rgba(0,0,0,.08)}
+.row h2{font-size:19px;font-weight:800;letter-spacing:-.01em}
+.row p{font-size:16px;line-height:1.55;color:#6b6b6b;font-weight:500;margin-top:6px}
+
+.foot{margin:120px 0 72px;display:flex;flex-direction:column;gap:22px}
+.soon{font-size:15px;font-weight:700}
+.soon a{color:#0a0a0a}
+.links{display:flex;gap:26px;font-size:14px;font-weight:600}
+.links a{color:#6b6b6b;text-decoration:none}
+.links a:hover{color:#0a0a0a}
+.fine{font-size:12px;line-height:1.7;color:#a3a3a3;font-weight:500}
+</style>
+
+<div class="wrap">
+  <div class="brand">
+    <svg width="18" height="18" viewBox="0 0 1024 1024" role="img" aria-label="Auto Sync">
+      <g id="m">
+        <path d="M 239.456 399.108 A 295 295 0 0 1 760.8 353.497" fill="none" stroke="#0a0a0a" stroke-width="90" stroke-linecap="round"/>
+        <path d="M 861.561 478.068 L 840.619 306.936 A 20 20 0 0 0 810.021 292.497 L 684.714 372.327 A 20 20 0 0 0 684.869 406.16 L 831.117 497.463 A 20 20 0 0 0 861.561 478.068 Z" fill="#0a0a0a"/>
+      </g>
+      <use href="#m" transform="rotate(180 512 512)"/>
+    </svg>
+    <span>AUTO SYNC</span>
   </div>
 
-  <p class="note">Works with any Fitbit tracker or Aria scale. Fitbit data is served by the Google Health API — the supported home of Fitbit data.</p>
+  <h1>Set it up once.<br>It syncs itself.</h1>
+  <p class="sub">Weight, body fat, and sleep — with stages — from your Fitbit
+  into Apple&nbsp;Health. A few times a day, on its own.</p>
 
-  <footer>
-    <a href="privacy.html">Privacy policy</a> · Support: <a href="mailto:nikolaiheum@gmail.com">nikolaiheum@gmail.com</a><br>
-    Auto Sync is an independent app, not affiliated with or endorsed by Google, Fitbit, or Apple.
-  </footer>
-</main>
-</body>
+  <div class="card">
+    <div class="verdict">All good.
+      <svg width="21" height="21" viewBox="0 0 24 24" fill="#34C759" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="crow">
+      <div class="cic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+      <div class="ctx"><b>Fitbit</b><span>Connected</span></div>
+    </div>
+    <div class="crow">
+      <div class="cic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6"/><path d="M2.5 22v-6h6"/><path d="M2 11.5a10 10 0 0 1 18.8-4.3"/><path d="M22 12.5a10 10 0 0 1-18.8 4.2"/></svg></div>
+      <div class="ctx"><b>Automatic sync</b><span>Today 07:12 · 4 new measurements</span></div>
+    </div>
+    <div class="crow">
+      <div class="cic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div>
+      <div class="ctx"><b>Apple Health</b><span>82.4 kg · 7h 32m last night</span></div>
+    </div>
+    <div class="crow">
+      <div class="cic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></div>
+      <div class="ctx"><b>Notifications</b><span>Quiet unless syncing stops</span></div>
+    </div>
+  </div>
+
+  <div class="rows">
+    <div class="row">
+      <h2>Weigh in. It shows up.</h2>
+      <p>Step on the scale and the number lands in Apple Health on its own —
+      no buttons, nothing to remember. Opening the app syncs on the spot.</p>
+    </div>
+    <div class="row">
+      <h2>Sleep, with the stages.</h2>
+      <p>Light, deep, REM, awake — the whole night as Fitbit scored it,
+      not just a total.</p>
+    </div>
+    <div class="row">
+      <h2>Your whole history, first sync.</h2>
+      <p>The first sync imports everything your Fitbit account holds —
+      years of weigh-ins and nights. After that it just keeps up.</p>
+    </div>
+    <div class="row">
+      <h2>Free. No account. No server.</h2>
+      <p>Your data goes from Google's Fitbit API straight into Apple Health,
+      on your phone. There's nowhere else it could go.</p>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="soon"><a href="https://testflight.apple.com/join/kQGdAFEY">Join the beta on TestFlight</a> — App Store when it's ready.</div>
+    <div class="links">
+      <a href="privacy.html">Privacy</a>
+      <a href="mailto:post@abello.no">post@abello.no</a>
+    </div>
+    <p class="fine">Works with any Fitbit tracker or Aria scale. Fitbit data is
+    served by the Google Health API. Auto Sync is an independent app, not
+    affiliated with or endorsed by Google, Fitbit, or Apple.</p>
+  </div>
+</div>
 </html>
